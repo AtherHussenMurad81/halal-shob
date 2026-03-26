@@ -1,2 +1,5 @@
 @import "tailwindcss";
 @plugin "daisyui";
+.max-w {
+  @apply mx-auto max-w-11/12;
+}
