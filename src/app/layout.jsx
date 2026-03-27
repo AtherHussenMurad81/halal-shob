@@ -3,6 +3,8 @@ import "./globals.css";
 import Logo from "@/components/Logo";
 import Theme from "@/components/Theme";
 import Header from "@/components/Header";
+import Login from "./login/page";
+import Href from "@/Href";
 
 const geistSans = Roboto({
   variable: "--font-geist-sans",
@@ -30,7 +32,10 @@ export default function RootLayout({ children }) {
           <div className=" justify-between items-center max-w flex">
             <Logo />
             <Header />
-            <Theme />
+            <div className="flex items-center gap-1 md:gap-5 font-semibold text-2xl">
+              <Theme />
+              <Href />
+            </div>
           </div>
         </nav>
         <main>{children}</main>
