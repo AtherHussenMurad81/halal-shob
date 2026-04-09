@@ -1,7 +1,11 @@
+import { connect } from "@/app/lib/dbConnect";
 import { feedback } from "../route";
-
+const feedbackCollection = connect("feedback");
 export async function GET(req) {
-  return Response.json(feedback);
+  //   return Response.json(feedback);
+
+  const result = await feedbackCollection.find().toArray();
+  return Response.json(result);
 }
 
 export async function POST(req) {
@@ -12,11 +16,25 @@ export async function POST(req) {
       message: "Please Send a message",
     });
   }
-  
-  const newFeedback = { message, id: feedback.length + 1 };
-  feedback.push(newFeedback);
-  return Response.json({
-    acknowledge: true,
-    insertedId: newFeedback.id,
-  });
+
+  const newFeedback = { message, date: new Date().toISOString() };
+
+  const result = await feedbackCollection.insertOne(newFeedback);
+
+  return Response.json(result);
 }
+// export async function DELETE(req) {
+//   const { message } = await req.json();
+//   if (!message || typeof message !== "string") {
+//     return Response.json({
+//       status: 400,
+//       message: "Please Send a message",
+//     });
+//   }
+
+//   const newFeedback = { message, date: new Date().toISOString() };
+
+//   const result = await feedbackCollection.deleteOne(newFeedback);
+
+//   return Response.json(result);
+// }
