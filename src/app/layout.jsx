@@ -17,7 +17,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Halal-Food-Delivery",
+  title: {
+    default: "Halal Food",
+    templete: "%s || Halal Food",
+  },
   description: "Its a Restaurants which selling halal food items",
 };
 

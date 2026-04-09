@@ -3,6 +3,7 @@ import CartBtn from "./CartBtn";
 import Link from "next/link";
 
 const CartItem = ({ food }) => {
+  // console.log(food);
   return (
     <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition flex">
       <figure>

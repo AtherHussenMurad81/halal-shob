@@ -2,6 +2,7 @@
 import CartItem from "@/components/CartItem";
 import InputSearch from "@/components/InputSearch";
 import React from "react";
+
 const getFoods = async (search) => {
   const res = await fetch(
     `https://taxi-kitchen-api.vercel.app/api/v1/foods/random?search=${search}`,
@@ -11,6 +12,9 @@ const getFoods = async (search) => {
   // console.log(data);
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return data.foods || [];
+};
+export const metadata = {
+  title: "ALl foods",
 };
 // console.log(data);
 const FoodPage = async ({ searchParams }) => {

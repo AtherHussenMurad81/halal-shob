@@ -1,19 +1,33 @@
 import React from "react";
 
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const res = await fetch(
+    `https://taxi-kitchen-api.vercel.app/api/v1/foods/${id}`,
+  );
+
+  const data = await res.json();
+  const { details } = data;
+  return {
+    title: details.title,
+  };
+}
+
 const SingleFood = async (id) => {
   const res = await fetch(
     `https://taxi-kitchen-api.vercel.app/api/v1/foods/${id}`,
     // { cache: "no-store" },
   );
   const data = await res.json();
-  console.log(data);
+  // console.log(data);
   return data.details;
 };
 
 const FoodDetails = async ({ params }) => {
-  const { id } = params;
+  // console.log(params);
+  const { id } = await params;
   const food = await SingleFood(id);
-
+  // console.log(food);
   if (!food) {
     return (
       <div className="text-center py-20 text-xl font-semibold">
