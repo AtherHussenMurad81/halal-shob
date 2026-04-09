@@ -1,6 +1,11 @@
 "use client";
+import { Anek_Bangla } from "next/font/google";
+import Image from "next/image";
 import { useState } from "react";
 
+const anikBangla = Anek_Bangla({
+  weight: ["400"],
+});
 export default function ReviewCard({ review }) {
   const { user, email, photo, rating, review: text, likes, date } = review;
 
@@ -13,12 +18,16 @@ export default function ReviewCard({ review }) {
   };
 
   return (
-    <div className="border rounded-xl p-5 shadow-md bg-white hover:shadow-lg transition">
+    <div
+      className={`${anikBangla.className} border rounded-xl p-5 shadow-md bg-white hover:shadow-lg transition`}
+    >
       {/* User Info */}
       <div className="flex items-center gap-4">
-        <img
+        <Image
           src={photo}
           alt={user}
+          height={300}
+          width={150}
           className="w-14 h-14 rounded-full object-cover border"
         />
 

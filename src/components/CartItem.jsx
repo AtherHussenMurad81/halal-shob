@@ -1,13 +1,16 @@
 import React from "react";
 import CartBtn from "./CartBtn";
 import Link from "next/link";
+import Image from "next/image";
 
 const CartItem = ({ food }) => {
   // console.log(food);
   return (
     <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition flex">
       <figure>
-        <img
+        <Image
+          width={300}
+          height={150}
           src={food.foodImg}
           alt={food.title}
           className="h-52 w-full object-cover"

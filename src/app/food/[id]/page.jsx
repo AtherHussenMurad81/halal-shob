@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 export async function generateMetadata({ params }) {
@@ -36,14 +37,16 @@ const FoodDetails = async ({ params }) => {
     );
   }
   const { title, foodImg, price, video, category, area } = food;
-  console.log(food);
+  // console.log(food);
   return (
     // <div></div>
     <div className="max-w-3xl mx-auto p-6">
       {/* Food Image */}
-      <img
+      <Image
         src={foodImg}
         alt={title}
+        height={300}
+        width={150}
         className="w-full h-72 object-cover rounded-xl shadow"
       />
 
