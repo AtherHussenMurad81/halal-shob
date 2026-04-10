@@ -3,22 +3,25 @@
 
 import { useRouter } from "next/navigation";
 
-const FeedbackForm = () => {
+const FeedbackForm = ({ postFeedback }) => {
   const router = useRouter();
   const handelSubmit = async (e) => {
     e.preventDefault();
 
     const message = e.target.message.value;
-    const res = await fetch(`http://localhost:3000/api/feedback`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        message,
-      }),
-    });
-    const data = await res.json();
+    const data = await postFeedback(message);
+    //  upper write other ways
+
+    // const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/api/feedback`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     message,
+    //   }),
+    // });
+    // const data = await res.json();
     if (data.insertedId) {
       alert("found");
       router.push("/feedback");
