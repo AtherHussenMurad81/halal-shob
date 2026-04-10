@@ -8,7 +8,15 @@ export const metadata = {
 };
 
 const getFeedback = async () => {
-  const res = await fetch(`http://localhost:3000/api/feedback`);
+  const res = await fetch(`http://localhost:3000/api/feedback`, {
+    cache: "force-cache",
+    next: {
+      revalidate: 60, //proti 1 minit por por cache korbe and revalided korbe
+    },
+    // cache: 'force-cache' ??sate sate ui te dekabe na reload korle o na
+
+    //  ei method ye server ye load na pataiye database ye load patabe. jeta onek onek usefull for a junour developer 
+  });
   return await res.json();
 };
 
