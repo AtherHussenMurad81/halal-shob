@@ -49,6 +49,7 @@ export async function PATCH(req, { params }) {
   const query = { _id: new ObjectId(id) };
 
   const newData = {
+    
     $set: {
       message,
     },
