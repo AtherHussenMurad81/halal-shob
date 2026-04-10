@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { redirect } from "next/navigation";
 import React from "react";
 
 export async function generateMetadata({ params }) {
@@ -29,12 +30,11 @@ const FoodDetails = async ({ params }) => {
   const { id } = await params;
   const food = await SingleFood(id);
   // console.log(food);
-  if (!food) {
-    return (
-      <div className="text-center py-20 text-xl font-semibold">
-        Food not found ❌
-      </div>
-    );
+  if (!food.title) {
+    return redirect("/food");
+    // <div className="text-center py-20 text-xl font-semibold">
+    //   Food not found ❌
+    // </div>
   }
   const { title, foodImg, price, video, category, area } = food;
   // console.log(food);

@@ -15,14 +15,14 @@ const getFeedback = async () => {
     },
     // cache: 'force-cache' ??sate sate ui te dekabe na reload korle o na
 
-    //  ei method ye server ye load na pataiye database ye load patabe. jeta onek onek usefull for a junour developer 
+    //  ei method ye server ye load na pataiye database ye load patabe. jeta onek onek usefull for a juniour developer
   });
   return await res.json();
 };
 
 const Feedback = async () => {
   const feedback = await getFeedback();
-  console.log(feedback);
+  // console.log(feedback);
 
   return (
     <div className="max-w">
